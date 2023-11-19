@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 tinydb="*"
-pyyaml = "*"
+pyyaml = "==5.3"
 glom = "*"
 selenium = "*"
 google-api-python-client = "*"

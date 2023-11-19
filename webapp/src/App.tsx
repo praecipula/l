@@ -2,15 +2,19 @@ import React from 'react';
 import './App.css';
 import { QRCode } from 'react-qrcode-logo';
 
+type errorCorrectionLevel = "L" | "M" | "Q" | "H";
 
 type iQRCCProps = {
   seedContent: string,
-  contentUpdate: Function
+  seedErrorCorrection: errorCorrectionLevel,
+  contentUpdate: Function,
+  ecUpdate: Function,
   renderDynamic: boolean
 }
 
 type iQRCCState = {
-  content: string;
+  content: string,
+  ecValue: errorCorrectionLevel
 }
 
 class QRCodeContent extends React.Component<iQRCCProps, iQRCCState> {
@@ -19,6 +23,7 @@ class QRCodeContent extends React.Component<iQRCCProps, iQRCCState> {
     super(props);
     this.state = {
       content: props.seedContent,
+      ecValue: props.seedErrorCorrection
     }
     console.log(this.props);
   }
@@ -28,15 +33,29 @@ class QRCodeContent extends React.Component<iQRCCProps, iQRCCState> {
     this.props.contentUpdate(event.currentTarget.value);
   }
 
+  ecValueChanged(event: React.FormEvent<HTMLDivElement>) {
+    var newValue = (event.target as HTMLInputElement).value as errorCorrectionLevel;
+    this.setState({ecValue: newValue});
+    this.props.ecUpdate(newValue);
+  }
+
   render() {
     var codeText = <p>this.props.seedContent</p>
     if (this.props.renderDynamic) {
-      codeText = <input type="text"
+      codeText = <div>
+      <input type="text"
         id="codeText"
         name="codeText"
         value={this.state.content}
         onChange={event=>this.inputChanged(event)}
         style={{width: "100%", textAlign: "center", margin: "0", fontWeight: "700", overflowWrap:"break-word"}}></input>
+        <div onChange={event=>this.ecValueChanged(event)}>
+      <input type="radio" id="low" name="error_correction" value="L"/> Low
+      <input type="radio" id="medium" name="error_correction" value="M"/> Medium
+      <input type="radio" id="q" name="error_correction" value="Q"/>Q
+      <input type="radio" id="high" name="error_correction" value="H"/> High
+      </div>
+      </div>
     } else {
       codeText = <p id="codeText" style={{width: "100%", textAlign: "center", margin: "0", fontWeight: "700", overflowWrap:"break-word"}}>{this.state.content}</p>
     }
@@ -47,7 +66,7 @@ class QRCodeContent extends React.Component<iQRCCProps, iQRCCState> {
 type iAppProps = {
   codeContent?: string,                     // Initial content for the qr code
   iconUrl?: string,                         // Overlay icon from this location
-  errorCorrection?: "L" | "M" | "Q" | "H";  // Error correction for the qr code
+  errorCorrection?: errorCorrectionLevel;   // Error correction for the qr code
   renderDynamic?: "true" | "false";         // Whether the QR code is expected to change. (This will effectively render components to do so).
   style?: "plain" | "matt";                 // Whether the QR code is expected to change. (This will effectively render components to do so).
 }
@@ -55,7 +74,7 @@ type iAppProps = {
 type iAppState = {
   qrContent: string                         // Actual content for the qr code. This can be dynamic.
   renderDynamic: boolean                    // Whether to render the code as editable in the browser.
-  errorCorrection: "L" | "M" | "Q" | "H";   // Error correction level
+  errorCorrection: errorCorrectionLevel;    // Error correction level
   style: "plain" | "matt";
 }
 
@@ -74,6 +93,10 @@ class App extends React.Component<iAppProps, iAppState> {
 
   qrContentUpdated(newContent: string) {
     this.setState({qrContent: newContent});
+  }
+
+  qrEcUpdated(newLevel: errorCorrectionLevel) {
+    this.setState({errorCorrection: newLevel});
   }
 
   render() {
@@ -104,7 +127,6 @@ class App extends React.Component<iAppProps, iAppState> {
     };
     //fgColor="#262664"
 
-    type errorCorrectionLevel = "H" | "M" | "L" | "Q";
     var errorCorrection: errorCorrectionLevel = "H";
     if (this.props.errorCorrection != null) {
       errorCorrection = this.props.errorCorrection;
@@ -134,11 +156,13 @@ class App extends React.Component<iAppProps, iAppState> {
                       ]}
                     logoWidth={200}
                     logoOpacity={0.4}
-                    ecLevel={errorCorrection}
+                    ecLevel={this.state.errorCorrection}
                       {...optionalProps}
                       />
                     <QRCodeContent seedContent={this.state.qrContent}
+                      seedErrorCorrection={this.state.errorCorrection}
                       contentUpdate={(newContent: string) => this.qrContentUpdated(newContent)}
+                      ecUpdate={(newLevel: errorCorrectionLevel) => this.qrEcUpdated(newLevel)}
                       renderDynamic={this.state.renderDynamic}/>
                 </div>
     return (
