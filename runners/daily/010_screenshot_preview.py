@@ -54,6 +54,9 @@ screenshot_run_data = []
 
 firefox_options = webdriver.FirefoxOptions()
 firefox_options.headless = True
+firefox_options.add_argument("--headless")
+firefox_options.add_argument("-width=1920");
+firefox_options.add_argument("-height=1080");
 browser = webdriver.Firefox(options=firefox_options)
 for page in matching_front_matter_pages:
     page_screenshot_data = {}
