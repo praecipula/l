@@ -193,12 +193,12 @@
         },
         "google-api-python-client": {
             "hashes": [
-                "sha256:1a5232e9cfed8c201799d9327e4d44dc7ea7daa3c6e1627fca41aa201539c0da",
-                "sha256:b9d68c6b14ec72580d66001bd33c5816b78e2134b93ccc5cf8f624516b561750"
+                "sha256:4427b2f47cd88b0355d540c2c52215f68c337f3bc9d6aae1ceeae4525977504c",
+                "sha256:a9d26d630810ed4631aea21d1de3e42072f98240aaf184a8a1a874a371115034"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==2.149.0"
+            "version": "==2.151.0"
         },
         "google-auth": {
             "hashes": [
@@ -489,12 +489,12 @@
         },
         "selenium": {
             "hashes": [
-                "sha256:48013f36e812de5b3948ef53d04e73f77bc923ee3e1d7d99eaf0618179081b99",
-                "sha256:f0780f85f10310aa5d085b81e79d73d3c93b83d8de121d0400d543a50ee963e8"
+                "sha256:1db3f3a0cd5bb07624fa8a3905a6fdde1595a42185a0617077c361dc53d104fb",
+                "sha256:7640f3f08ae7f4e450f895678e8a10a55eb4e4ca18311ed675ecc4684b96b683"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==4.26.0"
+            "version": "==4.26.1"
         },
         "sniffio": {
             "hashes": [
