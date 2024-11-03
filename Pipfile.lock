@@ -169,19 +169,18 @@
         },
         "face": {
             "hashes": [
-                "sha256:3790311a7329e4b0d90baee346eecad54b337629576edf3a246683a5f0d24446",
-                "sha256:7d59ca5ba341316e58cf72c6aff85cca2541cf5056c4af45cb63af9a814bed3e",
-                "sha256:ca3a1d8b8b6aa8e61d62a300e9ee24e09c062aceda549e9a640128e4fa0f4559"
+                "sha256:0e2c17b426fa4639a4e77d1de9580f74a98f4869ba4c7c8c175b810611622cd3",
+                "sha256:611e29a01ac5970f0077f9c577e746d48c082588b411b33a0dd55c4d872949f6"
             ],
-            "version": "==20.1.1"
+            "version": "==24.0.0"
         },
         "glom": {
             "hashes": [
-                "sha256:06af5e3486aacc59382ba34e53ebeabd7a9345d78f7dbcbee26f03baa4b83bac",
-                "sha256:fe4e9be4dc93c11a99f8277042e4bee95419c02cda4b969f504508b0a1aa6a66"
+                "sha256:4325f96759a912044af7b6c6bd0dba44ad8c1eb6038aab057329661d2021bb27",
+                "sha256:991db7fcb4bfa9687010aa519b7b541bbe21111e70e58fdd2d7e34bbaa2c1fbd"
             ],
             "index": "pypi",
-            "version": "==23.5.0"
+            "version": "==24.11.0"
         },
         "google-api-core": {
             "hashes": [
