@@ -8,6 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+gem "liquid", "~> 4.0"
 gem "jekyll", "~> 3.9.2"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
@@ -42,3 +43,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "webrick"
 gem "rqrcode"
+gem "logger"

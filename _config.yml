@@ -41,6 +41,11 @@ collections:
     output: true
     permalink: /:collection/:name
 
+  # Japanese language point bookmarks
+  jp:
+    output: true
+    permalink: /:collection/:name
+
   # Google maps directions
   go:
     output: true
